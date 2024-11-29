@@ -13,14 +13,13 @@ class Animal:
         if self.dz < 0:
             print("It's too deep, i can't dive :(")
 
-
     def get_cords(self):
         print(f' X: {self.dx}, Y: {self.dy}, Z: {self.dz}')
 
     def attack(self):
-        if Animal._DEGREE_OF_DANGER < 5:
+        if self._DEGREE_OF_DANGER < 5:
             print("Sorry, i'm peaceful :)")
-        elif Animal._DEGREE_OF_DANGER >= 5:
+        elif self._DEGREE_OF_DANGER >= 5:
             print("Be careful, i'm attacking you 0_0")
 
     def speak(self):
@@ -38,10 +37,9 @@ class AquaticAnimal(Animal):
     def dive_in(self, dz):
         self.dz = abs(self.dz-dz*(self.speed/2))
 
-
 class PoisonousAnimal(Animal):
     _DEGREE_OF_DANGER = 8
-    #super().__init__()
+
 class Duckbill(PoisonousAnimal, Bird, AquaticAnimal):
     sound = "Click-click-click"
 
