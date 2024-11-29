@@ -2,12 +2,12 @@ class Animal:
     live = True
     sound = None
     _DEGREE_OF_DANGER = 0
-    def __init__(self, speed, _cords = [0, 0, 0]):
-        self._cords = _cords
+    def __init__(self, speed):
+        self._cords = [0, 0, 0]
         self.speed = speed
 
     def move(self, dx, dy, dz):
-        if dz < 0:
+        if dz*self.speed < 0:
             print("It's too deep, i can't dive :(")
         else:
             self._cords[0] += dx*self.speed
@@ -37,6 +37,7 @@ class AquaticAnimal(Animal):
 
     def dive_in(self, dz):
         self._cords[2] = abs(self._cords[2]-dz*(self.speed/2))
+
 
 class PoisonousAnimal(Animal):
     _DEGREE_OF_DANGER = 8
